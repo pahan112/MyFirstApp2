@@ -33,7 +33,6 @@ public class ViewPostFragment extends Fragment {
 
     @BindView(R.id.et_id_view_post)
     EditText mEtIdViewPost;
-
     @BindView(R.id.rv_posts)
     RecyclerView mRecyclerView;
 
@@ -43,16 +42,13 @@ public class ViewPostFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.fragment_view_post,null);
-
-        ButterKnife.bind(this,view);
-
+        View view = inflater.inflate(R.layout.fragment_view_post, null);
+        ButterKnife.bind(this, view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mPostAdapter = new PostAdapter(mPostList);
         mRecyclerView.setAdapter(mPostAdapter);
-        return  view;
+        return view;
     }
-
 
     private void getPost() {
         String userId = mEtIdViewPost.getText().toString();
@@ -80,5 +76,4 @@ public class ViewPostFragment extends Fragment {
     public void onClick() {
         getPost();
     }
-
 }
