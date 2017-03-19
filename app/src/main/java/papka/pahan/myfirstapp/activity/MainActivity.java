@@ -1,6 +1,5 @@
 package papka.pahan.myfirstapp.activity;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +13,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment mainFragment = new MainFragment();
+        if (getSupportFragmentManager().findFragmentById(R.id.fragment_container) == null) {
+            setMainFragment();
+        }
+    }
+
+    private void setMainFragment() {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frgmCont, mainFragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fragment_container, new MainFragment(), MainFragment.class.getSimpleName());
         fragmentTransaction.commit();
     }
 }
