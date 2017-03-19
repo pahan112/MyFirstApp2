@@ -16,6 +16,7 @@ import retrofit2.http.Query;
  */
 
 public interface ApiInterface {
+
     @GET("posts")
     Call<List<Post>> getPosts(@Query(Constants.PATH_PARAM_USER_ID) String userId);
 

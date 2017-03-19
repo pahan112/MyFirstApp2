@@ -32,9 +32,9 @@ import retrofit2.Response;
 public class ViewPostFragment extends Fragment {
 
     @BindView(R.id.et_id_view_post)
-    EditText mEtIdViewPost;
+    EditText mUserIdEditText;
     @BindView(R.id.rv_posts)
-    RecyclerView mRecyclerView;
+    RecyclerView mPostListRecyclerView;
 
     private PostAdapter mPostAdapter;
     private List<Post> mPostList = new ArrayList<>();
@@ -44,14 +44,14 @@ public class ViewPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_post, null);
         ButterKnife.bind(this, view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mPostListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mPostAdapter = new PostAdapter(mPostList);
-        mRecyclerView.setAdapter(mPostAdapter);
+        mPostListRecyclerView.setAdapter(mPostAdapter);
         return view;
     }
 
     private void getPost() {
-        String userId = mEtIdViewPost.getText().toString();
+        String userId = mUserIdEditText.getText().toString();
         Call<List<Post>> getPostsCB = RetrofitMain.getApiInterface().getPosts(userId);
         getPostsCB.enqueue(new Callback<List<Post>>() {
             @Override
