@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+    <string name="create_post">Create Post</string>
+    <string name="view_post">View Posts</string>
+    <string name="show_posts">show Posts</string>
+    <string name="id">id</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="ok">OK</string>
+</resources>
