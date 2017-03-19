@@ -1,8 +1,8 @@
 package papka.pahan.myfirstapp.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +28,7 @@ import retrofit2.Response;
 public class CreatePostFragment extends Fragment {
 
     @BindView(R.id.et_id_create_post)
-    EditText mEtIdCreatePost;
+    EditText mIdCreatePostEditText;
     @BindView(R.id.et_title_create_post)
     EditText mEtTitleCreatePost;
     @BindView(R.id.et_body_create_post)
@@ -37,12 +37,10 @@ public class CreatePostFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_post,null);
+        View view = inflater.inflate(R.layout.fragment_create_post, null);
         ButterKnife.bind(this, view);
-        return  view;
+        return view;
     }
-
-
 
     private void createPost() {
         Call<Post> createPost = RetrofitMain.getApiInterface().createPost(createPostRequest());
@@ -65,15 +63,15 @@ public class CreatePostFragment extends Fragment {
 
     private CreatePostRequest createPostRequest() {
         CreatePostRequest createPostRequest1 = new CreatePostRequest();
-        createPostRequest1.setUserId(Integer.parseInt(mEtIdCreatePost.getText().toString()));
+        createPostRequest1.setUserId(Integer.parseInt(mIdCreatePostEditText.getText().toString()));
         createPostRequest1.setTitle(mEtTitleCreatePost.getText().toString());
         createPostRequest1.setBody(mEtBodyCreatePost.getText().toString());
         return createPostRequest1;
     }
 
-    @OnClick (R.id.btn_ok_create_post)
-    public void onClick(){
-        if (mEtIdCreatePost.getText().toString().isEmpty()) {
+    @OnClick(R.id.btn_ok_create_post)
+    public void onClick() {
+        if (mIdCreatePostEditText.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Enter at least one characters Id", Toast.LENGTH_LONG).show();
         } else if (mEtTitleCreatePost.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Enter at least five characters Title", Toast.LENGTH_LONG).show();

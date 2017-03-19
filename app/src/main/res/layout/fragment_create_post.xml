@@ -5,7 +5,6 @@
     android:background="@color/colorAccent"
     android:orientation="vertical">
 
-
     <EditText
         android:id="@+id/et_id_create_post"
         android:layout_width="74dp"
