@@ -47,6 +47,12 @@ public class MainFragment extends Fragment {
         mListener.openViewPostsFragment();
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
     public interface OnMainFragmentInteractionListener {
         void openCreatePostFragment();
 

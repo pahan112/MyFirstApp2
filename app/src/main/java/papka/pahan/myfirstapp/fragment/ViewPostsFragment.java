@@ -31,19 +31,38 @@ import retrofit2.Response;
 
 public class ViewPostsFragment extends Fragment {
 
+    private static final String ARG_ID = "ARG_ID";
+
     @BindView(R.id.et_id_view_post)
     EditText mUserIdEditText;
     @BindView(R.id.rv_posts)
     RecyclerView mPostListRecyclerView;
 
+    private String mId;
+
     private PostAdapter mPostAdapter;
     private List<Post> mPostList = new ArrayList<>();
+
+    public static ViewPostsFragment newInstance(String id) {
+        ViewPostsFragment fragment = new ViewPostsFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_ID, id);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mId = getArguments().getString(ARG_ID);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_post, null);
         ButterKnife.bind(this, view);
+        mUserIdEditText.setText(mId);
         mPostListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mPostAdapter = new PostAdapter(mPostList);
         mPostListRecyclerView.setAdapter(mPostAdapter);

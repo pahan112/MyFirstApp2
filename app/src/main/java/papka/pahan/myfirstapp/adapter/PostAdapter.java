@@ -18,10 +18,10 @@ import papka.pahan.myfirstapp.model.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PersonViewHolder> {
 
-    private List<Post> postsList;
+    private List<Post> mPostsList;
 
     public PostAdapter(List<Post> postsList) {
-        this.postsList = postsList;
+        this.mPostsList = postsList;
     }
 
     @Override
@@ -32,12 +32,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PersonViewHold
 
     @Override
     public void onBindViewHolder(PostAdapter.PersonViewHolder holder, int position) {
-        holder.bind(postsList.get(position));
+        holder.bind(mPostsList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return postsList.size();
+        return mPostsList.size();
     }
 
 

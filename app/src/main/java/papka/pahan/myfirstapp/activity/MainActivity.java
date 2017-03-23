@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnMa
 
     @Override
     public void openViewPostsFragment() {
-        changeFragment(new ViewPostsFragment(), ViewPostsFragment.class.getSimpleName(), true);
+        changeFragment(ViewPostsFragment.newInstance("123"), ViewPostsFragment.class.getSimpleName(), true);
     }
     //endregion
 }
